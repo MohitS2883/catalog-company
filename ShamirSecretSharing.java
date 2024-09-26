@@ -11,13 +11,13 @@ public class ShamirSecretSharing {
     // Function to decode the y value given its base and value
     public static BigInteger decode(String baseStr, String valueStr) {
         int base = Integer.parseInt(baseStr);
-        return new BigInteger(valueStr, base);  // Convert the value based on the base
+        return new BigInteger(valueStr, base);  
     }
 
     // Lagrange Interpolation function to calculate f(0) i.e., constant term 'c'
     public static BigDecimal lagrangeInterpolation(List<BigInteger[]> points, int k) {
         BigDecimal result = BigDecimal.ZERO;
-        MathContext mc = new MathContext(50);  // Set a higher precision for calculations
+        MathContext mc = new MathContext(50);  
 
         for (int i = 0; i < k; i++) {
             BigDecimal term = new BigDecimal(points.get(i)[1], mc);  // y value
@@ -29,16 +29,15 @@ public class ShamirSecretSharing {
                     term = term.multiply(numerator, mc).divide(denominator, mc);  // term *= (0 - x_j) / (x_i - x_j)
                 }
             }
-            result = result.add(term, mc);  // Add the term to the result
+            result = result.add(term, mc);  
         }
         return result;
     }
 
     public static void main(String[] args) {
         try {
-            // Parse the JSON file
-            JSONParser parser = new JSONParser();
-            Object obj = parser.parse(new FileReader("C:\\Users\\svenk\\Downloads\\Education\\multijava\\untitled\\input.json"));
+             = new JSONParser();
+            Object obj = parser.parse(new FileReader("\\input.json"));
             JSONObject jsonObject = (JSONObject) obj;
 
             // Extract n and k from the "keys" object
